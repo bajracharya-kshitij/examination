@@ -28,6 +28,13 @@ public class Result {
 		
 		float averageMarks = (float) total/3;
 		System.out.println(String.format("Average marks = %f", averageMarks));
+		
+		//if total marks greater than or equal to 120, result = passed else failed
+		if(total >= 120) {
+			System.out.println("Congratulations! You've passed");
+		} else {
+			System.out.println("Sorry, you've failed");
+		}
 	}
 	
 }
