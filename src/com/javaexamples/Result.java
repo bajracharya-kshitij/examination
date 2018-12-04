@@ -8,7 +8,20 @@ public class Result {
 		System.out.print("Enter your name: ");
 		Scanner scanner = new Scanner(System.in);
 		String name = scanner.nextLine();
+		
+		System.out.print("Enter marks in English: ");
+		int englishMarks = scanner.nextInt();
+		
+		System.out.print("Enter marks in Computer: ");
+		int computerMarks = scanner.nextInt();
+		
+		System.out.print("Enter marks in Science: ");
+		int sciencehMarks = scanner.nextInt();
+		
+		scanner.close();
 		System.out.println("Hello " + name);
+		System.out.println("Your result:");
+		System.out.println(String.format("English %d, Computer %d and Science %d", englishMarks, computerMarks, sciencehMarks));
 	}
 	
 }
