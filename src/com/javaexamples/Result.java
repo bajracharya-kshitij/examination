@@ -26,8 +26,8 @@ public class Result {
 		int total = englishMarks + computerMarks + scienceMarks;
 		System.out.println("Total marks received = " + total);
 		
-		int averageMarks = total/3;
-		System.out.println(String.format("Average marks = %d", averageMarks));
+		float averageMarks = (float) total/3;
+		System.out.println(String.format("Average marks = %f", averageMarks));
 	}
 	
 }
