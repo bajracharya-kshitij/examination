@@ -2,42 +2,51 @@ package com.javaexamples;
 
 import java.util.Scanner;
 
+import com.javaexamples.model.Subject;
+
 public class Result {
 	
 	public static int total = 0;
 	public static int numberOfSubjects = 0;
 
 	public static void main(String[] args) {
-		int[] marksList = getMarks();
-		displayMarks(marksList);
+		Subject[] subjects = getSubjects();
+		displayMarks(subjects);
 		calculateResult();
 	}
 	
-	public static int[] getMarks() {
+	public static Subject[] getSubjects() {
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.print("Enter number of subjects: ");
 		numberOfSubjects = scanner.nextInt();
+		scanner.nextLine();
 		
-		int[] marksList = new int[numberOfSubjects];
+		Subject[] subjectsList = new Subject[numberOfSubjects];
 		for(int i=0; i<=numberOfSubjects-1; i++) {
+			System.out.print("Enter name for subject: ");
+			String subjectName = scanner.nextLine();
+			
 			System.out.print("Enter marks for subject: ");
 			int marks = scanner.nextInt();
-			marksList[i] = marks;
-			total += marks;
+			scanner.nextLine();
+			
+			Subject subject = new Subject();
+			subject.setName(subjectName);
+			subject.setMarks(marks);
+			subjectsList[i] = subject;
 		}
-		
 		scanner.close();
-		return marksList;
+		
+		return subjectsList;
 	}
 	
-	public static void displayMarks(int[] marksList) {
+	public static void displayMarks(Subject[] subjects) {
 		System.out.println("Your result:");
 		
-		int count = 1;
-		while(count<=numberOfSubjects) {
-			System.out.println(String.format("Marks for subject %d = %d", count, marksList[count-1]));
-			count++;
+		for(Subject subject : subjects) {
+			System.out.println(String.format("Marks for subject %s = %d", subject.getName(), subject.getMarks()));
+			total += subject.getMarks();
 		}
 		
 		System.out.println("Total marks received = " + total);
