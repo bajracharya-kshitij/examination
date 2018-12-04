@@ -13,20 +13,31 @@ public class Result {
 		int numberOfSubjects = scanner.nextInt();
 		
 		int total = 0;
+		int[] marksList = new int[numberOfSubjects];
 		for(int i=0; i<=numberOfSubjects-1; i++) {
 			System.out.print("Enter marks for subject: ");
 			int marks = scanner.nextInt();
+			marksList[i] = marks;
 			total += marks;
 		}
 		
 		scanner.close();
+		
+		System.out.println("Hello " + name);
+		System.out.println("Your result:");
+		
+		int count = 1;
+		while(count<=numberOfSubjects) {
+			System.out.println(String.format("Marks for subject %d = %d", count, marksList[count-1]));
+			count++;
+		}
 		
 		System.out.println("Total marks received = " + total);
 		
 		float averageMarks = (float) total/numberOfSubjects;
 		System.out.println(String.format("Average marks = %f", averageMarks));
 		
-		//if total marks greater than or equal to 120, result = passed else failed
+		//if total marks greater than or equal to 40%, result = passed else failed
 		if(total >= 40*numberOfSubjects) {
 			System.out.println("Congratulations! You've passed");
 		} else {
