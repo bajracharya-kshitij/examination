@@ -9,28 +9,25 @@ public class Result {
 		Scanner scanner = new Scanner(System.in);
 		String name = scanner.nextLine();
 		
-		System.out.print("Enter marks in English: ");
-		int englishMarks = scanner.nextInt();
+		System.out.print("Enter number of subjects: ");
+		int numberOfSubjects = scanner.nextInt();
 		
-		System.out.print("Enter marks in Computer: ");
-		int computerMarks = scanner.nextInt();
-		
-		System.out.print("Enter marks in Science: ");
-		int scienceMarks = scanner.nextInt();
+		int total = 0;
+		for(int i=0; i<=numberOfSubjects-1; i++) {
+			System.out.print("Enter marks for subject: ");
+			int marks = scanner.nextInt();
+			total += marks;
+		}
 		
 		scanner.close();
-		System.out.println("Hello " + name);
-		System.out.println("Your result:");
-		System.out.println(String.format("English %d, Computer %d and Science %d", englishMarks, computerMarks, scienceMarks));
 		
-		int total = englishMarks + computerMarks + scienceMarks;
 		System.out.println("Total marks received = " + total);
 		
-		float averageMarks = (float) total/3;
+		float averageMarks = (float) total/numberOfSubjects;
 		System.out.println(String.format("Average marks = %f", averageMarks));
 		
 		//if total marks greater than or equal to 120, result = passed else failed
-		if(total >= 120) {
+		if(total >= 40*numberOfSubjects) {
 			System.out.println("Congratulations! You've passed");
 		} else {
 			System.out.println("Sorry, you've failed");
