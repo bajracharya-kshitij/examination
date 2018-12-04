@@ -3,14 +3,22 @@ package com.javaexamples;
 import java.util.Scanner;
 
 public class Result {
+	
+	public static int total = 0;
+	public static int numberOfSubjects = 0;
 
 	public static void main(String[] args) {
+		int[] marksList = getMarks();
+		displayMarks(marksList);
+		calculateResult();
+	}
+	
+	public static int[] getMarks() {
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.print("Enter number of subjects: ");
-		int numberOfSubjects = scanner.nextInt();
+		numberOfSubjects = scanner.nextInt();
 		
-		int total = 0;
 		int[] marksList = new int[numberOfSubjects];
 		for(int i=0; i<=numberOfSubjects-1; i++) {
 			System.out.print("Enter marks for subject: ");
@@ -20,12 +28,10 @@ public class Result {
 		}
 		
 		scanner.close();
-		
-		displayMarks(numberOfSubjects, marksList, total);
-		calculateResult(total, numberOfSubjects);
+		return marksList;
 	}
 	
-	public static void displayMarks(int numberOfSubjects, int[] marksList, int total) {
+	public static void displayMarks(int[] marksList) {
 		System.out.println("Your result:");
 		
 		int count = 1;
@@ -37,7 +43,7 @@ public class Result {
 		System.out.println("Total marks received = " + total);
 	}
 	
-	public static void calculateResult(int total, int numberOfSubjects) {
+	public static void calculateResult() {
 		float averageMarks = (float) total/numberOfSubjects;
 		System.out.println(String.format("Average marks = %f", averageMarks));
 		
